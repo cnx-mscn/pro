@@ -1,0 +1,11 @@
+streamlit
+pandas
+folium
+streamlit-folium
+openai
+firebase-admin
+fpdf
+google-api-python-client
+google-auth
+google-auth-oauthlib
+geopy
