@@ -12,6 +12,9 @@ from utils.pdf_utils import generate_pdf
 from utils.ai_suggestion import öneri_üret
 from utils.ai_route_map import rota_olustur
 from utils.google_calendar import add_event_to_calendar
+from dotenv import load_dotenv
+load_dotenv()
+
 
 st.set_page_config(page_title="Montaj Yönetim Sistemi", layout="wide")
 
