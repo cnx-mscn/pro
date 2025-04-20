@@ -36,7 +36,8 @@ if not st.session_state.logged_in:
                 st.session_state.logged_in = True
                 st.session_state.role = rol
                 st.session_state.user = kullanici
-                st.experimental_rerun()
+                st.rerun()
+
             else:
                 st.error("Geçersiz kullanıcı adı veya şifre.")
     else:
