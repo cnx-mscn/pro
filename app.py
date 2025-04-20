@@ -1,8 +1,9 @@
-
 import streamlit as st
 import json
 from datetime import date
 import uuid
+import os
+from dotenv import load_dotenv
 
 from utils.auth import load_users, register_user, login_user
 from utils.task_utils import load_tasks, save_tasks
@@ -12,9 +13,8 @@ from utils.pdf_utils import generate_pdf
 from utils.ai_suggestion import öneri_üret
 from utils.ai_route_map import rota_olustur
 from utils.google_calendar import add_event_to_calendar
-from dotenv import load_dotenv
-load_dotenv()
 
+load_dotenv()
 
 st.set_page_config(page_title="Montaj Yönetim Sistemi", layout="wide")
 
@@ -40,7 +40,6 @@ if not st.session_state.logged_in:
                 st.session_state.role = rol
                 st.session_state.user = kullanici
                 st.rerun()
-
             else:
                 st.error("Geçersiz kullanıcı adı veya şifre.")
     else:
@@ -91,7 +90,7 @@ if st.session_state.role == "Yönetici":
     harita = create_map(tasks)
     st_folium(harita, height=500)
 
-    st.subheader("📤 Görevleri PDF Olarak İndir")
+    st.subheader("📄 Görevleri PDF Olarak İndir")
     if st.button("PDF İndir"):
         pdf = generate_pdf(tasks)
         st.download_button("PDF'yi İndir", pdf, file_name="gorevler.pdf")
@@ -107,13 +106,13 @@ if st.session_state.role == "Yönetici":
                 )
         st.success("Tüm görevler takvime eklendi.")
 
-    st.subheader("🤖 Yapay Zeka Görev Önerisi")
+    st.subheader("🧐 Yapay Zeka Görev Önerisi")
     if st.button("AI Görev Önerisi Al"):
         tamamlanan = [t for t in tasks if t["durum"] == "tamamlandı"]
         cevap = öneri_üret(tamamlanan)
         st.info(cevap)
 
-    st.subheader("🧠 AI Rota Önerisi")
+    st.subheader("🧐 AI Rota Önerisi")
     if st.button("AI Rota Sıralaması Al"):
         cevap = rota_olustur(tasks)
         st.markdown(cevap)
