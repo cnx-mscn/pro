@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("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"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def rota_olustur(tasks):
     sehirler = [t["sehir"] for t in tasks if "sehir" in t]
