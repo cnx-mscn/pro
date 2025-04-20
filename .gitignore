@@ -1,0 +1,31 @@
+# Firebase servis anahtarını gizle
+firebase/firebase_service_account.json
+
+# Google Calendar hizmet hesabı
+google/calendar_credentials.json
+
+# __pycache__ klasörleri (Python’un otomatik oluşturduğu)
+__pycache__/
+*.py[cod]
+
+# Jupyter, IPython, VSCode gibi editör artıkları
+*.ipynb_checkpoints/
+.vscode/
+.env
+*.env
+.DS_Store
+
+# PDF, Excel gibi geçici çıktı dosyaları
+*.pdf
+*.xlsx
+*.xls
+
+# Log dosyaları
+*.log
+
+# Streamlit otomatik dosyaları
+.streamlit/secrets.toml
+
+# Virtual Environment (eğer proje içinde oluşturduysan)
+venv/
+env/
